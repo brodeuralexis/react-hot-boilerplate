@@ -1,6 +1,9 @@
 import * as React from 'react';
 
 export interface CounterProps {
+    /**
+     * Test
+     */
     initialCount?: number;
 }
 
@@ -9,7 +12,7 @@ export interface CounterState {
     interval: number | null;
 }
 
-export default class Counter extends React.PureComponent<CounterProps, CounterState> {
+export default class Counter extends React.Component<CounterProps, CounterState> {
 
     get stopped(): boolean {
         return this.state.interval == null;

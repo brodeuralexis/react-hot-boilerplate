@@ -4,16 +4,29 @@ export interface AppProps {
     name?: string;
 }
 
-export default class App extends React.PureComponent<AppProps, void> {
+export interface AppState {
+    value: string;
+}
+
+export default class App extends React.Component<AppProps, AppState> {
+
+    public state = {
+        value: ""
+    };
+
+    public handleChange(e) {
+        let value: string = e.target.value.trim();
+
+        this.setState({
+            value
+        });
+    }
 
     render() {
+        console.dir(this.state)
         return (
             <div>
-                { this.props.name == null ? (
-                    <h1>Hello World!</h1>
-                ) : (
-                    <h1>Hello { this.props.name }</h1>
-                ) }
+                <input type="text" value={ this.state.value } onChange={ this.handleChange.bind(this) } />
             </div>
         )
     }
